@@ -122,6 +122,9 @@ func processMessage(sender *WsChannel, message *string) {
 
 	if hasKey {
 		if messageData.SongPath != "" {
+			if session.SessionData.SongPath != messageData.SongPath {
+				session.SessionData.Section = ""
+			}
 			session.SessionData.SongPath = messageData.SongPath
 		}
 		session.SessionData.Transpose = messageData.Transpose
